@@ -30,7 +30,7 @@ try:
     nome_txt = "log_dia_" + now.strftime('%d') + "." + now.strftime('%m') + "." + now.strftime('%Y') + ".txt"
 
     #abrindo json
-    with open("C:\\Users\\moraesg\\Desktop\\test_credentials\\nomes.json", "r", encoding="utf-8-sig") as arquivo:
+    with open("coloque seu arquivo json com os caminhos, as senhas e os usuarios aqui", "r", encoding="utf-8-sig") as arquivo:
         var = arquivo.read()
     #setando os objetos dentro do json como valor_json[]
     valor_json = json.loads(var)
@@ -44,7 +44,7 @@ try:
     key = base64.b64decode(valor_json['key'].encode('utf-8'))
     iv = base64.b64decode(valor_json['iv'].encode('utf-8')) 
 
-    # IMPORTANTE IMPORTANTE - source username e source password servem para o source_folder e o arquive_folder pois estão no mesmo caminho
+    
     arquive_folder_uncripted = base64.b64decode(valor_json['arquive_folder'].encode('utf-8'))
     source_folder_uncripted = base64.b64decode(valor_json['source_folder'].encode('utf-8'))
     source_username_uncripted = base64.b64decode(valor_json['source_username'].encode('utf-8'))
@@ -84,7 +84,7 @@ try:
     #fim da descriptografação
     def mover_arquivos(arquive_folder, source_folder, destination_folder, source_password, dest_password, source_username, dest_username):
         try:
-            f = open(r"C:\Users\moraesg\Desktop\test_credentials" + nome_txt, "a+")
+            f = open(r"caminho em que o log será criado" + nome_txt, "a+")
             conexao_raiz = subprocess.run(['net', 'use', source_folder, '/user:' + source_username, source_password])
             conexao_arquivo = subprocess.run(['net', 'use', arquive_folder, '/user:' + source_username, source_password])
             conexao_destino = subprocess.run(['net', 'use', destination_folder, '/user:' + dest_username, dest_password])
